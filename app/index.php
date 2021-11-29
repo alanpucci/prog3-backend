@@ -17,7 +17,7 @@ require_once './middlewares/Verificadora.php';
 require_once './db/AccesoDatos.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad();
 
 $app = AppFactory::create();
 $app->addRoutingMiddleware();

@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8d7fc9953aecb2fbd706915af38fb9033dce35b9',
+        'reference' => '8275d926305947d52f2ecafa0d6daa7c2596beef',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8d7fc9953aecb2fbd706915af38fb9033dce35b9',
+            'reference' => '8275d926305947d52f2ecafa0d6daa7c2596beef',
             'dev_requirement' => false,
         ),
         'fig/http-message-util' => array(
