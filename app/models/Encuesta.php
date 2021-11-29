@@ -49,4 +49,12 @@ class Encuesta
         $comanda_modificar->execute();
         return "Encuesta registrada exitosamente";
     }
+
+    public static function obtenerMejores()
+    {
+        $objAccesoDatos = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM encuestas WHERE (mozo_puntaje+restaurant_puntaje+mesa_puntaje+cocinero_puntaje)/4 >= 7");
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

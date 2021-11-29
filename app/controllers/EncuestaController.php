@@ -29,4 +29,19 @@ class EncuestaController extends Encuesta
         ->withHeader('Content-Type', 'application/json');
       }
     }
+
+    public function TraerMejores($request, $response, $args)
+  {
+    try {
+      $lista = Encuesta::obtenerMejores();
+      $payload = json_encode(array("listaComandas" => $lista));
+      $response->getBody()->write($payload);
+      return $response
+        ->withHeader('Content-Type', 'application/json');
+    } catch (\Throwable $th) {
+      $response->getBody()->write(json_encode(array("mensaje" => "ERROR, " . $th->getMessage())));
+      return $response
+        ->withHeader('Content-Type', 'application/json');
+    }
+  }
 }

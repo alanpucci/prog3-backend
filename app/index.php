@@ -42,7 +42,10 @@ $app->post('/cargarCSV', \ComandaController::class . ':CargarCSV')->add(\Verific
 
 $app->post('/guardarCSV', \ComandaController::class . ':GuardarCSV')->add(\Verificadora::class . ':ValidarEmpleado');
 
-$app->post('/encuestas', \EncuestaController::class . ':CargarUno');
+$app->group('/encuestas', function (RouteCollectorProxy $group) {
+  $group->post('[/]', \EncuestaController::class . ':CargarUno');
+  $group->get('[/]', \EncuestaController::class . ':TraerMejores')->add(\Verificadora::class . ':ValidarSocio');
+});
 
 $app->post('/pdf', \PDFController::class . ':CrearPDF')->add(\Verificadora::class . ':ValidarSocio');
 
@@ -57,6 +60,9 @@ $app->group('/mesas', function (RouteCollectorProxy $group) {
   $group->post('[/]', \MesaController::class . ':CargarUno')->add(\Verificadora::class . ':ValidarEmpleado');
   $group->put('/{id}', \MesaController::class . ':CerrarMesa')->add(\Verificadora::class . ':ValidarSocio');
 });
+
+$app->get('/mesaUsada', \MesaController::class . ':MesaUsada')->add(\Verificadora::class . ':ValidarSocio');
+
 
 $app->group('/comandas', function (RouteCollectorProxy $group) {
   $group->get('[/]', \ComandaController::class . ':TraerTodos')->add(\Verificadora::class . ':ValidarEmpleado');

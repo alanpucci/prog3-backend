@@ -37,6 +37,14 @@ class Mesa
         return $consulta->fetchAll(PDO::FETCH_CLASS, 'Mesa');
     }
 
+    public static function obtenerMasUsada()
+    {
+        $objAccesoDatos = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT m.id_codigo as mesa, COUNT(c.mesa_id) as cantidad FROM comandas c LEFT JOIN mesas m ON c.mesa_id=m.id GROUP BY c.mesa_id LIMIT 1");
+        $consulta->execute();
+        return $consulta->fetch(PDO::FETCH_ASSOC);
+    }
+
     public static function obtenerUno($id)
     {
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
