@@ -22,7 +22,6 @@ $dotenv->safeLoad();
 $app = AppFactory::create();
 $app->addRoutingMiddleware();
 $app->addBodyParsingMiddleware();
-$app->setBasePath('/app');
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
